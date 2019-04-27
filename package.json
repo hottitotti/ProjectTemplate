@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Setting up WebPack and file tree for potential projects.",
   "main": "index.js",
-  "babel":{
-    "presets":[
+  "babel": {
+    "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
     ]
@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/natalie-klein/ProjectTemplate#readme",
   "dependencies": {
+    "dotenv": "^7.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "pg": "^7.10.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
