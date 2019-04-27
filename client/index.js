@@ -1,19 +1,12 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-require('./index.css'); 
-// ^this path ???? 
+import React from 'react'
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import Root from './components/Root'
 
-class App extends React.Component {
-    render(){
-        return (
-            <div>
-                Hello hot toddlers aka HottiTottiThottiz wooooooo
-            </div>
-        )
-    }
-}
 
- ReactDOM.render(
-    <App />,
-    document.getElementById('app'),
- )
+const store = createStore(todoApp)
+
+render(<Root store={store} />, document.getElementById('root'))
+
+
