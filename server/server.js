@@ -3,13 +3,6 @@ const app = express();
 const db = require('./database.js');
 const bodyParser = require('body-parser');
 
-
-//from nats solo 
-// app.get('/', (request, response) => {
-//     db.query('SELECT word, link FROM "public"."vocab" ', (err,data) => {
-//         response.send(data);
-//     })
-
 app.use(function (request, response, next) {
     response.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
     response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -58,24 +51,105 @@ app.post('/signup' , (request, response) => {
     })
 })
 
-app.post('/login' , (request, response) => {
+app.post('/login' , (request, response) => { 
+    // Unpack the request inforatmion
+    const username = request.body.username;
+    const password = request.body.password;
+    // Write our query
+    const checkUserPwQuery = `SELECT username, _userid from users WHERE username='${username}' AND password='${password}'`;
+
+    db.query(checkUserPwQuery, (err, queryResult) => {
+        if (err) {
+            console.log('database error')
+            response.send(err);
+        }
+
+        // if username and password are correct
+        else if (queryResult.rows.length > 0) {
+            console.log('in the correct dealio');
+            const userNameAndId = {
+                username: queryResult.rows[0]['username'],
+                _userid: queryResult.rows[0]['_userid']
+            }
+            response.send(userNameAndId);
+        }
+
+        //if username and/or password invalid 
+        else {
+            console.log('in the invalid dealio');
+            response.send('username and/or password invalid')
+        }
+    })
 
 })
 
 app.get('/tickets' , (request, response) => {
-
+    const ticketQuery = 'SELECT * FROM tickets';
+    db.query(ticketQuery, (err, queryResult) => {
+        console.log('dis be query result rows degg :', queryResult.rows)
+        if (err) {
+            console.log('database error')
+            response.send(err);
+        }
+        else {
+            response.send(queryResult.rows)
+        }
+    })
 })
 
-app.post('/tickets' , (request, response) => {
+app.get('/tickets/:ticketid' , (request, response) => {
+    const ticketId = request.params.ticketid;
+    const ticketQuery = `SELECT * FROM tickets WHERE _ticketid=${ticketId}`;
+    db.query(ticketQuery, (err, queryResult) => {
+        console.log('dis be query result rows degg :', queryResult.rows)
+        if (err) {
+            console.log('database error')
+            response.send(err);
+        } else if (queryResult.rows.length === 0){
+            response.send('couldn\'t find ticket')        
+        }
+        else {
+            response.send(queryResult.rows[0])
+        }
+    })
+})
+
+app.post('/tickets' , (req, response) => {
+    const addTicketQuery = `INSERT INTO tickets (user_id, prob_title, prob_desc, resolved, react, redux, html, css, postgresql, mongo, node, express, webpack, git, gulp, testing, jquery) VALUES (${req.body.user_id}, '${req.body.prob_title}', '${req.body.prob_desc}', ${req.body.resolved}, ${req.body.react}, ${req.body.redux}, ${req.body.html}, ${req.body.css}, ${req.body.postgresql}, ${req.body.mongo}, ${req.body.node}, ${req.body.express}, ${req.body.webpack}, ${req.body.git}, ${req.body.gulp}, ${req.body.testing}, ${req.body.jquery})`; 
+    db.query(addTicketQuery, (err, queryResult) => {
+        if (err) {
+            console.log('database error');
+            response.send(err);
+        } else {
+            response.send('ticket successfully added to database')
+        }
+    })
 
 })
 
 app.get('/comments' , (request, response) => {
-
+    const commentQuery = 'SELECT * FROM comments'
+    db.query(commentQuery, (err, queryResult) => {
+        if (err) {
+            console.log('database error')
+            response.send(err);
+        }
+        else {
+            response.send(queryResult.rows)
+        }
+    })
 })
 
-app.post('/comments' , (request, response) => {
-
+app.post('/comments' , (req, response) => {
+    const addCommentQuery = `INSERT INTO comments (user_id, ticket_id, comment_desc, correct) VALUES (${req.body.user_id}, ${req.body.ticket_id}, '${req.body.comment_desc}', ${req.body.correct})`;
+    db.query(addCommentQuery, (err, queryResult) => {
+        if (err){
+            console.log('database error');
+            response.send(err);
+        } else {
+            response.send('comment successfully added to database')
+        }
+     })
 })
 
 
