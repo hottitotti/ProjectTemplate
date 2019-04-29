@@ -9,7 +9,7 @@ class SingleTicket extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.ticket_id;
-        axios.get('/card' + id) 
+        axios.get('/card/' + id) 
         .then(res => {
 
         })

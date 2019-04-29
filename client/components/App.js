@@ -28,7 +28,7 @@ class App extends React.Component {
         id:response.data.id
       }) 
       // https://stackoverflow.com/questions/41466055/how-do-i-pass-state-through-react-router
-      that.props.history.push({pathname: '/feed', state:{id:that.state.id})
+      that.props.history.push({pathname: '/feed', state:{id:that.state.id}})
     })
     .catch(function (err)  {
       console.log(err);

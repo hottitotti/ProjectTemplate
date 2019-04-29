@@ -1,8 +1,8 @@
 import * as types from './actionTypes'
 
 
-export const createCard = (value) => ({
-  type: types.CREATE_CARD,
+export const createTicket = (value) => ({
+  type: types.CREATE_TICKET,
   payload: {
     prob_title: text,
     prob_desc: text,
@@ -18,15 +18,15 @@ export const createCard = (value) => ({
  * they return the updated state
  */
 
- export const deleteCard = () => ({
-  type: types.DELETE_CARD,
+ export const deleteTicket = () => ({
+  type: types.DELETE_TICKET,
   payload: {
     
   }
  })
 
-export const CREATE_CARD = 'CREATE_CARD';
-export const DELETE_CARD = 'DELETE_CARD';
+export const CREATE_TICKET = 'CREATE_TICKET';
+export const DELETE_TICKET = 'DELETE_TICKET';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const SELECT_RESOLVED = 'SELECT_RESOLVED';
 export const FILTERBY_ALL = 'FILTERBY_ALL';
