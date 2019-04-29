@@ -4,17 +4,11 @@ import { render } from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import App from './App'
-
-
-
-// Hello hot toddlers aka HottiTottiThottiz wooooooo
-
-
-// Hello hot toddlers aka HottiTottiThottiz wooooooo
+import App from './components/App'
+import Feed from '/components/Feed'
+import SingleTicket from './components/SingleTicketViewer'
 
 require('./index.css'); 
-// ^this path ???? 
 
 // <ul id="uList">
 //           <li className="list">
@@ -37,6 +31,8 @@ const Root = ({ store }) => (
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/:filter?" component={App} />
+        <Route path="/feed" component={Feed} />
+        <Route path="/:ticket_id" component={SingleTicket}/>
       </Router>
     </Provider>
   )

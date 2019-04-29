@@ -2,21 +2,6 @@ import React from 'react'
 import { withRouter, Redirect} from 'react-router-dom'
 import axios from 'axios';
 
-const mapStateToProps = (state, { params }) => ({
-  onUpdateText: (newText) => {
-    dispatch(actions.onUpdateText(newText));
-  },
-  addMarket: () => {
-    dispatch(actions.addMarket());
-  },
-  addCard: (event) => {
-    dispatch(actions.addCard(event));
-  },
-  deleteCard: (event) => {
-    dispatch(actions.deleteCard(event));
-  }
-  });
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -43,7 +28,7 @@ class App extends React.Component {
         id:response.data.id
       }) 
       // https://stackoverflow.com/questions/41466055/how-do-i-pass-state-through-react-router
-      that.props.history.push({pathname: '/feed', state:{id:that.state.id}})
+      that.props.history.push({pathname: '/feed', state:{id:that.state.id})
     })
     .catch(function (err)  {
       console.log(err);
@@ -71,12 +56,3 @@ class App extends React.Component {
     )
   }
 }
-
-
-const App = () => (
-    <div>
-      <AddTodo />
-      <VisibleTodoList />
-      <Footer />
-    </div>
-  );

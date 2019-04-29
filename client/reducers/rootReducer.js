@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes';
+import * as types from '../actions/ActionTypes';
 
 const initialState = {
     isAuthenticated: false,
@@ -23,11 +23,17 @@ const initialState = {
         Gulp: false,
         Testing: false,
         jQuery: false
-  };
+  }
+}
   
-  const marketsReducer = (state=initialState, action) => {
-    let marketList;
+  const rootReducer = (state=initialState, action) => {
 
-    switch(action.type) {
-        case types.CREATE_CARD:
+     // switch(action.type) {
+    //     case types.CREATE_CARD:
+    return state;
+  }
+
+   
         
+
+export default rootReducer;
