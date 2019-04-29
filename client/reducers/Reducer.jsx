@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes';
+import * as types from '../actions/ActionTypes.jsx';
 
 const initialState = {
     isAuthenticated: false,
@@ -29,70 +29,52 @@ const initialState = {
 };
 
   const ticketCreator = (state = initialState, action) => {
-    if(action.type === 'CREATE_TICKET'){
-      const newTicket = {
-        username,
-        user_id,
-        prob_desc,
-        prob_title,
-        tags: newTicketTags,
-        resolved: false,
-      }
+    switch(action.type) {
+      case types.CREATE_TICKET: 
+        const newTicket = {
+          username,
+          user_id,
+          prob_desc,
+          prob_title,
+          tags: newTicketTags,
+          resolved: false,
+        };
+    
       tickets = state.tickets.slice();
       tickets.push(newTicket)
       return {
         ...state,
         tickets,
       };
-    };
+      case types.CREATE_COMMENT:
+      const newComment = {
+        username,
+        user_id,
+        ticket_id,
+        comment_desc,
+        tickets, 
+        correct: false,
+      };
+      return {
+        ...state,
+        tickets, 
+        resolved,
+      }
+      case types.SELECT_RESOLVED: 
+      const resolver = {
+        username,
+        user_id,
+        ticket_id,
+        tickets,
+        resolved,
+      };
+      return {
+        ...state,
+        tickets,
+        resolved: true
+      }
+    
+  }
   };
-
-const commentCreator = (state = initialState, action) => {
-  if(action.type === 'CREATE_COMMENT') {
-    const newComment = {
-      username,
-      user_id,
-      ticket_id,
-      comment_desc,
-      tickets, 
-      correct: false,
-    }
-    return {
-      ...state,
-      tickets, 
-      resolved,
-    }
-  }
-}
-  
-const resolvedSelector = (state = initialState, action) => {
-  if(action.type === 'SELECT_RESOLVED') {
-    const resolver = {
-      username,
-      user_id,
-      ticket_id,
-      tickets,
-      resolved,
-    }
-    return {
-      ...state,
-      tickets,
-      resolved: true
-    }
-  }
-}
-
-const filterSelector = (tickets, filter) => {
-  switch(filter) {
-    case 'all': 
-      return tickets;
-    case 'status':
-      return tickets.filter(tickets => tickets.resolved === true);
-    case 'username':
-      return tickets.filter(tickets => tickets.username === username);
-    case 'date':
-      return tickets.filter(tickets => tickets.date === date);
-  }
-}
 
 export default Reducer;
