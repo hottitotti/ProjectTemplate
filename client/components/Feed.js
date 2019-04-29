@@ -1,20 +1,20 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router'dom
+import { Link } from 'react-router-dom'
 
 
-class Feed extends Component {
+class Feed extends React.Component {
     state = {
-        tickets: [];
+        tickets: []
     }
-}
+
 
 componentDidMount() {
     axios.get('/feed')
     .then(res => {
         console.log(res);
         this.setState({
-            tickets: res.data;
+            tickets: res.data
         })
     })
 }
@@ -32,7 +32,7 @@ render() {
               </Link>
                 <p>{ticket.prob_datetime}</p>
               </div>
-            </div>>
+            </div>
           )
         })
     ) : (
@@ -45,6 +45,7 @@ render() {
         {postList}
         </div>
     )
+}
 }
 
 export default Feed;

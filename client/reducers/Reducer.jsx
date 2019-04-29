@@ -94,3 +94,5 @@ const filterSelector = (tickets, filter) => {
       return tickets.filter(tickets => tickets.date === date);
   }
 }
+
+export default Reducer;
