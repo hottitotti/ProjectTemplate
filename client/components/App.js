@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    }
+    
 
     this.handleClick=this.handleClick.bind(this);
     this.buttonClick=this.buttonClick.bind(this);
@@ -56,3 +56,5 @@ class App extends React.Component {
     )
   }
 }
+
+export default App;

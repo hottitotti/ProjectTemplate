@@ -2,14 +2,16 @@ import * as types from '../actions/ActionTypes.jsx';
 
 const initialState = {
     isAuthenticated: false,
-      username,
-      password,
+      username:"samsilver",
+      password:"nullisgreat",
       redirect: false,
-      user_id,
-      session_id,
+      user_id:7,
+      session_id:123,
       resolved: false,
+      date_time:null,
       tickets: [],
       comments: [],
+      ticketId:null,
       tags: {
         HTML:false,
         CSS: false,
@@ -65,6 +67,7 @@ const initialState = {
       // const resolver = {
       //   username,
       //   user_id,
+
       //   tickets,
       //   resolved,
       // };
@@ -72,9 +75,13 @@ const initialState = {
       //   ...state,
       //   tickets,
       //   resolved: true
+
+      // }
+
       // } //we're not using this right now, so I'm commenting it out. Maybe this could be a stretch feature.
+
     
   }
-  };
+};
 
 export default Reducer;

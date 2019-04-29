@@ -3,8 +3,8 @@ import axios from 'axios'
 
 class SingleTicket extends Component {
     state = {
-        ticket: null
-        comments:null;
+        ticket: null,
+        comments:null
     }
 
     componentDidMount() {

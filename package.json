@@ -7,7 +7,12 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
-    ]
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties"
+      ]
+  ]
   },
   "scripts": {
     "start": "webpack-dev-server --open"
@@ -24,6 +29,8 @@
   },
   "homepage": "https://github.com/hottitotti/ProjectTemplate#readme",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "axios": "^0.18.0",
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "dotenv": "^7.0.0",
