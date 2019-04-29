@@ -2,15 +2,16 @@ import * as types from '../actions/ActionTypes.jsx';
 
 const initialState = {
     isAuthenticated: false,
-      username,
-      password,
+      username:"samsilver",
+      password:"nullisgreat",
       redirect: false,
-      user_id,
-      session_id,
+      user_id:7,
+      session_id:123,
       resolved: false,
-      date_time,
+      date_time:null,
       tickets: [],
-      ticketId,
+      comments: [],
+      ticketId:null,
       tags: {
         HTML:false,
         CSS: false,
@@ -60,21 +61,21 @@ const initialState = {
         tickets, 
         resolved,
       }
-      case types.SELECT_RESOLVED: 
-      const resolver = {
-        username,
-        user_id,
-        ticket_id,
-        tickets,
-        resolved,
-      };
-      return {
-        ...state,
-        tickets,
-        resolved: true
-      }
+      // case types.SELECT_RESOLVED: 
+      // const resolver = {
+      //   username,
+      //   user_id,
+      //   ticket_id,
+      //   tickets,
+      //   resolved,
+      // };
+      // return {
+      //   ...state,
+      //   tickets,
+      //   resolved: true
+      // }
     
   }
-  };
+};
 
 export default Reducer;
