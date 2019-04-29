@@ -2,21 +2,6 @@ import React from 'react'
 import { withRouter, Redirect} from 'react-router-dom'
 import axios from 'axios';
 
-const mapStateToProps = (state, { params }) => ({
-  onUpdateText: (newText) => {
-    dispatch(actions.onUpdateText(newText));
-  },
-  addMarket: () => {
-    dispatch(actions.addMarket());
-  },
-  addCard: (event) => {
-    dispatch(actions.addCard(event));
-  },
-  deleteCard: (event) => {
-    dispatch(actions.deleteCard(event));
-  }
-  });
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -71,12 +56,3 @@ class App extends React.Component {
     )
   }
 }
-
-
-const App = () => (
-    <div>
-      <AddTodo />
-      <VisibleTodoList />
-      <Footer />
-    </div>
-  );
