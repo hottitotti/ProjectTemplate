@@ -8,9 +8,8 @@ const initialState = {
       user_id,
       session_id,
       resolved: false,
-      date_time,
       tickets: [],
-      ticketId,
+      comments: [],
       tags: {
         HTML:false,
         CSS: false,
@@ -36,7 +35,7 @@ const initialState = {
           user_id,
           prob_desc,
           prob_title,
-          tags: newTicketTags,
+          tags,
           resolved: false,
         };
     
@@ -50,29 +49,30 @@ const initialState = {
       const newComment = {
         username,
         user_id,
-        ticket_id,
         comment_desc,
         tickets, 
         correct: false,
       };
+      comments = state.comments.slice();
+      comments.push(newComment)
       return {
         ...state,
         tickets, 
+        comments,
         resolved,
       }
-      case types.SELECT_RESOLVED: 
-      const resolver = {
-        username,
-        user_id,
-        ticket_id,
-        tickets,
-        resolved,
-      };
-      return {
-        ...state,
-        tickets,
-        resolved: true
-      }
+      // case types.SELECT_RESOLVED: 
+      // const resolver = {
+      //   username,
+      //   user_id,
+      //   tickets,
+      //   resolved,
+      // };
+      // return {
+      //   ...state,
+      //   tickets,
+      //   resolved: true
+      // } //we're not using this right now, so I'm commenting it out. Maybe this could be a stretch feature.
     
   }
   };
