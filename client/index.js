@@ -3,10 +3,10 @@ import { render } from 'react-dom'
 import { createStore } from 'redux'
 import Root from './Root'
 import Provider from 'react-redux'
-import Reducer from './reducers/Reducer.jsx'
+import reducers from './reducers/index.js'
 
 
-const store = createStore(Reducer)
+const store = createStore(reducers)
 
 render(<Provider store ={store}><Root/></Provider>, document.getElementById('root'))
 
