@@ -29,7 +29,7 @@ const initialState = {
   }
 };
 
-  const ticketCreator = (state = initialState, action) => {
+  const Reducer = (state = initialState, action) => {
     switch(action.type) {
       case types.CREATE_TICKET: 
         const newTicket = {
@@ -80,7 +80,7 @@ const initialState = {
 
       // } //we're not using this right now, so I'm commenting it out. Maybe this could be a stretch feature.
 
-    
+    default: return state;
   }
 };
 

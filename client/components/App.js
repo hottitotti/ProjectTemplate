@@ -1,6 +1,9 @@
 import React from 'react'
 import { Router, Redirect} from 'react-router-dom'
 import axios from 'axios';
+import { connect } from 'react-redux'
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -43,7 +46,7 @@ class App extends React.Component {
     return (
       <div>
         <div className='frontBackgroundBox'>
-          <h1>Potify</h1>
+          <h1>Hello</h1>
           <form id='login-post' onSubmit={this.buttonClick}>
             <input name="username" type="text" placeholder="username" id="username"></input>
             <input name="password" type="password" placeholder="password" id="password"></input>
@@ -57,4 +60,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {state: state}
+}
+
+export default connect(mapStateToProps)(App);
