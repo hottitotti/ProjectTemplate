@@ -27,12 +27,14 @@ require('./index.css');
 {/* <Route exact path="/signup" component={Signup} />
 <Route exact path="/garden" component={Garden} /> */}
 
+
 const Root = () => (
-      <Router>
-        <Route path="/" component={App} />
-        <Route path="/feed" component={Feed} />
-        <Route path="/:ticket_id" component={SingleTicket}/>
-      </Router>
+  <Router>
+    <Route path="/" component={App} />
+    <Route path="/feed" component={Feed} />
+    <Route path="/:ticket_id" component={SingleTicket}/>
+  </Router>
+
   )
 
 
